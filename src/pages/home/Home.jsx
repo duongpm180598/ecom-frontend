@@ -28,18 +28,11 @@ function Home() {
     limit: ordersPerPage,
     offset: 0,
   });
-  const [hotView, setHostView] = useState('false');
   useEffect(() => {
     const newParams = filterParams(params);
     dispatch(fetchingData(newParams));
   }, [params]);
 
-  useEffect(() => {
-    if (!hotView) return;
-    new APIClient().get();
-  }, [hotView]);
-
-  useEffect(() => {});
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl p-4 sm:p-6 lg:max-w-7xl lg:px-8">

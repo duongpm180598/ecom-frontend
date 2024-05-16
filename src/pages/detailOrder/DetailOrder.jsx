@@ -87,7 +87,6 @@ function DetailOrder() {
         console.log('err ::', e);
       });
   };
-
   if (!currOrder) return <Loading></Loading>;
   return (
     <div className="bg-gray-50">
@@ -100,7 +99,11 @@ function DetailOrder() {
                   <span
                     className={classNames(
                       'absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white dark:ring-gray-500',
-                      x.name == currOrder.status ? 'dark:bg-green-700' : ''
+                      currOrder.order_histories.length < 5
+                        ? currOrder.order_histories[index]
+                          ? 'bg-green-300'
+                          : ''
+                        : 'bg-red-300'
                     )}
                   >
                     <img className="w-6 h-6" src={x.img} alt="" />
